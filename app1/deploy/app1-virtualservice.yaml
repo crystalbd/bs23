@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: app1-virtualservice
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - istio-system/ingressgateway
+  http:
+  - match:
+    - uri:
+        prefix: "/app1"
+    route:
+    - destination:
+        host: app1-service
+        port:
+          number: 80
+
