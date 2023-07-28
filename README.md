@@ -3,35 +3,35 @@
 Directory Structure
 
 directory root                                                                                                                                                      
-├── app1                                                                                                                                                            
-│   ├── src                                                                                                                                                        
-│   ├── build                                                                                                                                                       
-│   └── deploy                                                                                                                                                      
-│       ├── app1-deployment.yaml                                                                                                                                    
-│       ├── app1-service.yaml                                                                                                                                       
-│       └── app1-configmap.yaml                                                                                                                                     
-│   └── Jenkinsfile                                                                                                                                                 
-      └── Jenkinsfile                                                                                                                                               
-│   └── readme.md                                                                                                                                                   
-├── app2                                                                                                                                                            
-│   ├── src                                                                                                                                                         
-│   ├── build                                                                                                                                                       
-│   └── deploy                                                                                                                                                      
-│       ├── app2-deployment.yaml                                                                                                                                    
-│       ├── app2-service.yaml                                                                                                                                      
-│       └── app2-configmap.yaml                                                                                                                                     
-│   └── Jenkinsfile                                                                                                                                                 
-      └── Jenkinsfile                                                                                                                                               
-│   └── readme.md                                                                                                                                                   
-├── nginx                                                                                                                                                           
-│   └── deploy                                                                                                                                                      
-│       ├── nginx-deployment.yaml                                                                                                                                   
-│       └── nginx-configmap.yaml                                                                                                                                    
-│   └── readme.md                                                                                                                                                   
-├── infra                                                                                                                                                           
-│   ├── config                                                                                                                                                      
-│   └── readme.md                                                                                                                                                   
-└── readme.md                                                                                                                                                                                                                                                                                                                           
+├──  app1                                                                                                                                                           
+│    ├── src                                                                                                                                                       
+│    ├── build                                                                                                                                                      
+│    └── deploy                                                                                                                                                     
+│        ├── app1-deployment.yaml                                                                                                                                   
+│        ├── app1-service.yaml                                                                                                                                      
+│        └── app1-configmap.yaml                                                                                                                                    
+│    └── Jenkinsfile                                                                                                                                                
+       └── Jenkinsfile                                                                                                                                              
+│    └── readme.md                                                                                                                                                  
+├──  app2                                                                                                                                                           
+│    ├── src                                                                                                                                                        
+│    ├── build                                                                                                                                                      
+│    └── deploy                                                                                                                                                     
+│       ├── app2-deployment.yaml                                                                                                                                   
+│       ├── app2-service.yaml                                                                                                                                     
+│       └── app2-configmap.yaml                                                                                                                                    
+│    └── Jenkinsfile                                                                                                                                                
+        └── Jenkinsfile                                                                                                                                             
+│    └── readme.md                                                                                                                                                  
+├──  nginx                                                                                                                                                          
+│    └── deploy                                                                                                                                                     
+│       ├── nginx-deployment.yaml                                                                                                                                  
+│       └── nginx-configmap.yaml                                                                                                                                   
+│    └── readme.md                                                                                                                                                  
+├──  infra                                                                                                                                                          
+│    ├── config                                                                                                                                                     
+│    └── readme.md                                                                                                                                                  
+└── readme.md                                                                                                                                                                                                                                                                                                                          
 
 Project Guide:
 
@@ -72,6 +72,7 @@ Project Guide:
     If you wish to integrate a service mesh for API traffic routing, consider using tools like Istio or Linkerd. Service mesh can handle advanced traffic management, observability, and security features for microservices-based architectures.
 
 With this folder structure, codebase, Dockerfiles, Kubernetes YAML files, Jenkins pipelines, and detailed instructions, anyone can start Jenkins in a container using Docker Compose, set up two pipelines using Jenkinsfiles from the public repository, build the code, and push Docker images to their DockerHub account. They can then use these Docker images with Kubernetes YAML files to deploy App 1 and App 2 into the lightweight Kubernetes cluster. The separate instructions provided for deploying Nginx and updating its config to point to App 1 and App 2 will help users in achieving the desired outcome.
+
 
 
 # About Me:                                                                                                                                                         
