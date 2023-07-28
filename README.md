@@ -32,7 +32,7 @@ directory root
 │    ├── config                                                                                                                                                     
 │    └── readme.md
 ├──  Istio                                                                                                                                                          
-│    └── readme.md
+│    └── readme.md                                                                                                                                                  
 ├──  Jenkins                                                                                                                                                        
 │    └── docker-compose.yml                                                                                                                                         
 └── readme.md                                                                                                                                                                                        
