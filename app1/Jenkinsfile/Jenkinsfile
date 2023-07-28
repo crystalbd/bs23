@@ -1,12 +1,16 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
+        DOCKERHUB_USERNAME = 'your_dockerhub_username' // Replace with your DockerHub username
+    }
     stages {
         stage('Build') {
             steps {
                 dir('app1/build') {
                     script {
-                        dockerImage = docker.build("<DOCKERHUB_USERNAME>/app1:${env.BUILD_NUMBER}")
-                        docker.withRegistry("<DOCKERHUB_USERNAME>") {
+                        dockerImage = docker.build("${DOCKERHUB_USERNAME}/app1:${env.BUILD_NUMBER}")
+                        docker.withRegistry("${DOCKERHUB_CREDENTIALS}") {
                             dockerImage.push()
                         }
                     }

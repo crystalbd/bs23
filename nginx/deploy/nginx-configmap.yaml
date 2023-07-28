@@ -9,10 +9,10 @@ data:
         server_name localhost;
 
         location /app1 {
-            proxy_pass http://app1-service;
+            proxy_pass http://<NODE_IP>:<NODE_PORT_APP1>;
         }
 
         location /app2 {
-            proxy_pass http://app2-service;
+            proxy_pass http://<NODE_IP>:<NODE_PORT_APP2>;
         }
     }

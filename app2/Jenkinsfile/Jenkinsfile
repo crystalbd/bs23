@@ -1,12 +1,16 @@
 pipeline {
     agent any
+    environment {
+        DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
+        DOCKERHUB_USERNAME = 'your_dockerhub_username' // Replace with your DockerHub username
+    }
     stages {
         stage('Build') {
             steps {
-                dir('app2/build') {
+                dir('app1/build') {
                     script {
-                        dockerImage = docker.build("<DOCKERHUB_USERNAME>/app2:${env.BUILD_NUMBER}")
-                        docker.withRegistry("<DOCKERHUB_USERNAME>") {
+                        dockerImage = docker.build("${DOCKERHUB_USERNAME}/app2:${env.BUILD_NUMBER}")
+                        docker.withRegistry("${DOCKERHUB_CREDENTIALS}") {
                             dockerImage.push()
                         }
                     }
@@ -15,8 +19,8 @@ pipeline {
         }
         stage('Deploy') {
             steps {
-                sh 'kubectl apply -f app2/deploy/app2-deployment.yaml'
-                sh 'kubectl apply -f app2/deploy/app2-service.yaml'
+                sh 'kubectl apply -f app1/deploy/app2-deployment.yaml'
+                sh 'kubectl apply -f app1/deploy/app2-service.yaml'
             }
         }
     }
