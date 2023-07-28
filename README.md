@@ -1,10 +1,10 @@
 # BS23 Assignment
 
-# Directory Structure
+Directory Structure
 
 directory root                                                                                                                                                      
 ├── app1
-│   ├── src                                                                                                                                                         
+│   ├── src                                                                                                                                                        
 │   ├── build                                                                                                                                                       
 │   └── deploy                                                                                                                                                      
 │       ├── app1-deployment.yaml                                                                                                                                    
