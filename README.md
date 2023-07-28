@@ -3,7 +3,7 @@
 Directory Structure
 
 directory root                                                                                                                                                      
-├── app1
+├── app1                                                                                                                                                            
 │   ├── src                                                                                                                                                        
 │   ├── build                                                                                                                                                       
 │   └── deploy                                                                                                                                                      
