@@ -11,9 +11,9 @@ Step 3: Host Docker Image on DockerHub
 Build and push the Docker images to your DockerHub account.
 Replace <DOCKERHUB_USERNAME> to your DockerHub account username.
 
-# cd build
-# docker build -t <DOCKERHUB_USERNAME>/app1:latest .
-# docker push <DOCKERHUB_USERNAME>/app1:latest
+ cd build
+ docker build -t <DOCKERHUB_USERNAME>/app1:latest .
+ docker push <DOCKERHUB_USERNAME>/app1:latest
 
 Step 4: Create Kubernetes Deployment, ConfigMap, and Service YAMLs
 Create the Kubernetes Deployment YAML file for the application.
@@ -29,44 +29,22 @@ Configuration for the app1-service.yaml is under deploy/app1-service.yaml
 
 Step 5: Apply these YAML files in the Kubernetes (k3s) cluster
 change directory
-# cd deploy
+ cd deploy
 Apply the ConfigMaps first
-# kubectl apply -f app1-configmap.yaml
+ kubectl apply -f app1-configmap.yaml
 Apply the Deployment
-# kubectl apply -f app1-deployment.yaml
+ kubectl apply -f app1-deployment.yaml
 Apply the Service
-# kubectl apply -f app1-service.yaml
+ kubectl apply -f app1-service.yaml
 
 Step 6: Check node & pod status
-# kubectl get nodes
-# kubectl get pods
-# kubectl get pods -o wide
+ kubectl get nodes
+ kubectl get pods
+ kubectl get pods -o wide
 
 The services for app1 are of type NodePort, which will allow you to access the applications using the Node IP and NodePort as mentioned:
-
 App1 URL: http://nodeip:nodeport/app1
 
-
-Step 7: set up Jenkins using Docker Compose
-Create a docker-compose.yml file to run Jenkins as a container.
-For run jenkins docker-compose up -d
-
-version: '3'
-services:
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-    restart: always
-volumes:
-  jenkins_home:
-
-
-Step 8:  Create Jenkins pipeline
+Step 7:  Create Jenkins pipeline
 Jenkinsfile configuration under Jenkins/Jenkinsfile.
 Modify your Jenkinsfile to make use of the environment variable for DockerHub credentials.
