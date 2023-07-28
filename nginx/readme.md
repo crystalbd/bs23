@@ -10,14 +10,14 @@ Step 1: Create the necessary YAML files:
 
 3. Update Node IP & Port in nginx-configmap.yaml at proxy_pass section.
 To see Service running & get IP use this command
-# kubectl get services
+  kubectl get services
 
 Step 2:  Apply these YAML files in the Kubernetes (k3s) cluster:
 Apply the ConfigMaps first
-# kubectl apply -f nginx-configmap.yaml
+  kubectl apply -f nginx-configmap.yaml
 
 Apply the Deployments
-# kubectl apply -f nginx-deployment.yaml
+  kubectl apply -f nginx-deployment.yaml
 
 
 
