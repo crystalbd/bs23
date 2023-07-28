@@ -30,7 +30,9 @@ directory root
 │    └── readme.md                                                                                                                                                  
 ├──  infra                                                                                                                                                          
 │    ├── config                                                                                                                                                     
-│    └── readme.md                                                                                                                                                  
+│    └── readme.md
+├──  Jenkins                                                                                                                        
+│    └── docker-compose.yml
 └── readme.md                                                                                                                                                                                                                                                                                                                          
 
 Project Guide:
