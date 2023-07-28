@@ -23,3 +23,35 @@ spec:
       nodeSelector:
         node: node1
 
+      # Add the Istio sidecar proxy container
+      - name: istio-proxy
+        image: docker.io/istio/proxyv2:1.12.0
+        args:
+        - proxy
+        - sidecar
+        - --configPath
+        - /etc/istio/proxy
+        - --binaryPath
+        - /usr/local/bin/envoy
+        volumeMounts:
+        - name: istio-certs
+          mountPath: /etc/certs
+          readOnly: true
+        - name: istio-envoy
+          mountPath: /usr/local/bin/envoy
+          subPath: envoy
+        - name: istio-config
+          mountPath: /etc/istio/proxy
+          readOnly: true
+      volumes:
+      - name: istio-certs
+        secret:
+          secretName: istio.default
+          optional: true
+      - name: istio-envoy
+        configMap:
+          name: istio-envoy
+          optional: true
+      - name: istio-config
+        configMap:
+          name: istio
