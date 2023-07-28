@@ -31,9 +31,9 @@ directory root
 ├──  infra                                                                                                                                                          
 │    ├── config                                                                                                                                                     
 │    └── readme.md
-├──  Jenkins                                                                                                                        
-│    └── docker-compose.yml
-└── readme.md                                                                                                                                                                                                                                                                                                                          
+├──  Jenkins                                                                                                                                                        
+│    └── docker-compose.yml                                                                                                                                         
+└── readme.md                                                                                                                                                                                        
 
 Project Guide:
 
