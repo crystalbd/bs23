@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                dir('app1/build') {
+                    script {
+                        dockerImage = docker.build("<DOCKERHUB_USERNAME>/app1:${env.BUILD_NUMBER}")
+                        docker.withRegistry("<DOCKERHUB_USERNAME>") {
+                            dockerImage.push()
+                        }
+                    }
+                }
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'kubectl apply -f app1/deploy/app1-deployment.yaml'
+                sh 'kubectl apply -f app1/deploy/app1-service.yaml'
+            }
+        }
+    }
+}
