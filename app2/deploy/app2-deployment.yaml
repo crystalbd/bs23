@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: atikbd/app2:latest
+        image: <DockerHub_Username>/app2:latest
         ports:
         - containerPort: 8000
         envFrom:
