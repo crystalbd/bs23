@@ -17,3 +17,8 @@ spec:
         image: atikbd/app2:latest
         ports:
         - containerPort: 8000
+        envFrom:
+            - configMapRef:
+                name: app2-configmap
+      nodeSelector:
+        node: node2
