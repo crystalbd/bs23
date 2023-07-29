@@ -47,4 +47,20 @@ App1 URL: http://nodeip:nodeport/app1
 
 Step 7:  Create Jenkins pipeline
 Jenkinsfile configuration under Jenkins/Jenkinsfile.
-Modify your Jenkinsfile to make use of the environment variable for DockerHub credentials.
+
+For creating Jenkins Pipeline we need to login to the Jenkins server that we configured earlier.
+Here are bellow steps to configure the pipeline:
+  1. From the Dashboard click on New Item.
+  2. Enter your pipeline name in the item name field.
+  3. Select the Pipeline tab then click ok.
+  4. In General Section click GitHub project & paste GitHub URL.
+  5. In the Build Triggers section click the GitHub hook for GITScm polling.
+  6. In the Pipeline section select Pipeline script to paste your pipeline config from app1> Jenkins> Jenkinsfile in the project directory.
+     Click Pipeline Syntax to store secret credentials. From the Sample Step section use 'withCredentials: Bind credentials to variables'. Click on add in the 
+     Bindings section and select 'Secret text'. Write a variable name & click Add > Jenkinns. In the kind section select Secret text. In the Secret section write your 
+     DockerHub credential & click on Add. Then click on Generate Pipeline Script. cope the pipeline script to update the push to docker hub section.
+
+  7. If we want to use remote Jenkinsfile then skip point 6 and select Pipeline script from SCM in the Pipeline section. In the SCM section select Git. In the Repositories      section paste the project github url in the Repository URL field. In the Credentials section click Add > Jenkins then select Secret text as Kind. In the Secret field set your DockerHub Credentials. In ID field write the variable name that is set on the env section on Jenkinsfile. set your branch in the Branch Specifier field. Script Path should be a remote Jenkinsfile path. In this project, we use app1/Jenkins/Jenkinsfile. Now click on save.
+
+  8. To run this pipeline click on the Build Now tab. 
+  9. To monitor the running process click the last created build number then console output.
