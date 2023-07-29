@@ -3,21 +3,21 @@ Run Jenkins Container using Docker Compose file
 Step 1: Create a Docker Compose file to run Jenkins.
 Create a file named docker-compose.yml with the following content:
 
-version: '3'
-services:
-  jenkins:
-    image: jenkins/jenkins:lts
-    container_name: jenkins
-    ports:
-      - "8080:8080"
-      - "50000:50000"
-    volumes:
-      - jenkins_home:/var/jenkins_home
-      - /var/run/docker.sock:/var/run/docker.sock
-      - .env:/var/jenkins_home/.env
-    restart: always
-volumes:
-  jenkins_home:
+version: '3'                                                                                                                                           
+services:                                                                                                                                             
+  jenkins:                                                                                                                                        
+    image: jenkins/jenkins:lts                                                                                                                          
+    container_name: jenkins                                                                                                                          
+    ports:                                                                                                                                                
+      - "8080:8080"                                                                                                                            
+      - "50000:50000"                                                                                                                            
+    volumes:                                                                                                                                         
+      - jenkins_home:/var/jenkins_home                                                                                                                             
+      - /var/run/docker.sock:/var/run/docker.sock                                                                                                                   
+      - .env:/var/jenkins_home/.env                                                                                                                             
+    restart: always                                                                                                                                
+volumes:                                                                                                                                               
+  jenkins_home:                                                                                                                              
 
 
 Step 2: Apply Docker Compose file
