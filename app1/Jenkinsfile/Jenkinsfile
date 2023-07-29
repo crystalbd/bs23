@@ -5,15 +5,24 @@ pipeline {
         DOCKERHUB_USERNAME = 'your_dockerhub_username' // Replace with your DockerHub username
     }
     stages {
+        stage('Clone Source Code') {
+            steps {
+                git branch: 'main', url: 'https://github.com/crystalbd/bs23.git'
+                // git branch: 'main', url: 'https://github.com/yourusername/src.git'
+            }
+        }       
         stage('Build') {
             steps {
                 dir('app1/build') {
-                    script {
-                        dockerImage = docker.build("${DOCKERHUB_USERNAME}/app1:${env.BUILD_NUMBER}")
-                        docker.withRegistry("${DOCKERHUB_CREDENTIALS}") {
-                            dockerImage.push()
-                        }
-                    }
+                    sh 'docker build -t <DOCKERHUB_USERNAME>/app1:latest .'
+                }
+            }
+        }
+        stage('Push to DockerHub') {
+            steps {
+                withCredentials([string(credentialsId: 'DOCKERHUB_CREDENTIALS', variable: 'DOCKERHUB')]) {
+                    sh "echo $DOCKERHUB | docker login -u <DOCKERHUB_USERNAME> --password-stdin"
+                    sh 'docker push <DOCKERHUB_USERNAME>/app1:latest'
                 }
             }
         }
