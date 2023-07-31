@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'Master'  // set label of Jenkins Node
+        label 'Node_Name'  // set label of Jenkins Node
     }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
