@@ -37,6 +37,7 @@ directory root
 │    └── docker-compose.yml                                                                                                                                         
 └── readme.md                                                                                                                                                                                        
 
+
 Project Guide:
 
 1.  Set up the Project Repository
@@ -49,16 +50,15 @@ Project Guide:
 
 3.  Create Dockerfiles for the Laravel Applications
     Create two Dockerfiles, one for each application, to build Docker images.
-    [App1 Dockerfile](https://github.com/crystalbd/bs23/tree/main/app1/build/Dockerfile)                                                                     
-    [App2 Dockerfile](https://github.com/crystalbd/bs23/tree/main/app2/build/Dockerfile)                                                                     
-
+    [App1 Dockerfile](https://github.com/crystalbd/bs23/tree/main/app1/build/Dockerfile) [App2 Dockerfile](https://github.com/crystalbd/bs23/tree/main/app2/build/Dockerfile)                                                                
+                                                                       
 4.  Push Docker Images to DockerHub
     Build the Docker images for App 1 and App 2 and push them to your DockerHub account.                                                                 
     [App1](https://github.com/crystalbd/bs23/tree/main/app1)   [App2](https://github.com/crystalbd/bs23/tree/main/app2)                                                                
 5.  Create Kubernetes YAML Files                                                                                                                 
     Create separate YAML files for the Kubernetes deployment, ConfigMap, and Service for each application. Also, create YAML files for the Nginx deployment.
-    [App1 Kubernetes YAML](https://github.com/crystalbd/bs23/tree/main/app1/deploy) [Instructions](https://github.com/crystalbd/bs23/tree/main/app1)             
-    [App2 Kubernetes YAML](https://github.com/crystalbd/bs23/tree/main/app2/deploy) [Instructions](https://github.com/crystalbd/bs23/tree/main/app2)              
+    [App1 Kubernetes YAML](https://github.com/crystalbd/bs23/tree/main/app1/deploy)  [Instructions](https://github.com/crystalbd/bs23/tree/main/app1)             
+    [App2 Kubernetes YAML](https://github.com/crystalbd/bs23/tree/main/app2/deploy)  [Instructions](https://github.com/crystalbd/bs23/tree/main/app2)             
 
 6.  Set up Lightweight Kubernetes Cluster
     Choose the lightweight Kubernetes distribution of your choice (k3s, minikube, k0s) and set it up on your local machine. Provide detailed instructions in the infra folder on how to set up the chosen Kubernetes distribution.                                                              
@@ -67,8 +67,7 @@ Project Guide:
 7. Create Jenkins Pipelines
     Create two Jenkins pipelines (Jenkinsfile) for each application to build and deploy the applications into the lightweight Kubernetes cluster. Instructions for setting up Jenkins using Docker Compose should be provided in the root Jenkinsfile.
     [App1 Jenkins Pipeline](https://github.com/crystalbd/bs23/tree/main/app1/Jenkinsfile/Jenkinfile) [Instruction](https://github.com/crystalbd/bs23/tree/main/app1)                                                                                                      
-[App2 Jenkins Pipeline](https://github.com/crystalbd/bs23/tree/main/app2/Jenkinsfile/Jenkinfile) [Instruction](https://github.com/crystalbd/bs23/tree/main/app1)
-[Jenkins Settings](https://github.com/crystalbd/bs23/blob/main/Jenkins/)
+[App2 Jenkins Pipeline](https://github.com/crystalbd/bs23/tree/main/app2/Jenkinsfile/Jenkinfile) [Instruction](https://github.com/crystalbd/bs23/tree/main/app1)   [Jenkins Settings](https://github.com/crystalbd/bs23/blob/main/Jenkins/)
 
 8.  Customize Kubernetes Deployment Files
     Update the Kubernetes deployment files to use the Docker images built by the Jenkins pipeline. This can be achieved by using placeholders for image names and environment variables. During deployment, the placeholders can be replaced with the actual image names and environment variables through the Jenkins pipeline.
@@ -87,9 +86,10 @@ Project Guide:
 
 12. Bonus: Integrating Service Mesh
     If you wish to integrate a service mesh for API traffic routing, consider using tools like Istio or Linkerd. Service mesh can handle advanced traffic management, observability, and security features for microservices-based architectures.
-    [Integrating Service Mesh](https://github.com/crystalbd/bs23/tree/main/Istio)                                                                      
-
+    [Integrating Service Mesh](https://github.com/crystalbd/bs23/tree/main/Istio)
+                                                                      
 With this folder structure, codebase, Dockerfiles, Kubernetes YAML files, Jenkins pipelines, and detailed instructions, anyone can start Jenkins in a container using Docker Compose, set up two pipelines using Jenkinsfiles from the public repository, build the code, and push Docker images to their DockerHub account. They can then use these Docker images with Kubernetes YAML files to deploy App 1 and App 2 into the lightweight Kubernetes cluster. The separate instructions provided for deploying Nginx and updating its config to point to App 1 and App 2 will help users in achieving the desired outcome.
+
 
 
 
