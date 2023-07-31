@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'Master'  // set label of Jenkins Node
+    }
     environment {
         DOCKERHUB_CREDENTIALS = credentials('DOCKERHUB_CREDENTIALS')
         DOCKERHUB_USERNAME = 'your_dockerhub_username' // Replace with your DockerHub username
